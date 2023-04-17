@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+
+{% block page_title %}
+sign up
+{% endblock page_title %}
+
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+    </form>
+{% endblock content %}
