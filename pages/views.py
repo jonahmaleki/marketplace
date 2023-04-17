@@ -3,11 +3,11 @@ from django.views import generic
 
 
 class HomePageView(generic.TemplateView):
-    template_name = 'home.html'
+    template_name = 'pages/home.html'
 
 
 class AboutUsPageView(generic.TemplateView):
-    template_name = 'aboutus.html'
+    template_name = 'pages/aboutus.html'
 
 
 
