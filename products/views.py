@@ -10,3 +10,6 @@ class ProductListView(ListView):
 
     def get_queryset(self):
         return Product.objects.filter(active=True)
+
+
+class
