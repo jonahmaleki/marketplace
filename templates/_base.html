@@ -61,7 +61,7 @@
                                 <div class="mainmenu-nav d-none d-lg-block w-100 pr-3">
                                     <ul class="mainmenu d-lg-flex jusity-content-end jusity-content-lg-start pt-4">
                                         <li class="mainmenu__item menu-item-has-children active">
-                                            <a href="index.html" class="mainmenu__link">
+                                            <a href="{% url 'home' %}" class="mainmenu__link">
                                                 <span class="mm-text">خانه</span>
                                             </a>
                                         </li>
@@ -71,7 +71,7 @@
                                             </a>
                                         </li>
                                         <li class="mainmenu__item menu-item-has-children">
-                                            <a href="#" class="mainmenu__link">
+                                            <a href="{% url 'product_list' %}" class="mainmenu__link">
                                                 <span class="mm-text">صفحات</span>
                                             </a>
                                          </li>
@@ -136,7 +136,7 @@
 
 
         <!-- Footer Sta
-        <!-- Search form Popup Start -->
+        <!-  Search form Popup Start -->
         <div class="searchform__popup" id="searchForm">
             <a href="#" class="btn-close"><i class="flaticon flaticon-cross"></i></a>
             <div class="searchform__body">
