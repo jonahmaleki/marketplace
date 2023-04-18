@@ -5,6 +5,8 @@ from .models import Product
 
 class ProductListView(ListView):
     # model = Product
+    # or
+    # queryset = Product.objects.filter(active=True)
     template_name = 'products/product_list.html'
     context_object_name = 'products'
 
@@ -12,4 +14,7 @@ class ProductListView(ListView):
         return Product.objects.filter(active=True)
 
 
-class
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'products/product_detail.html'
+    context_object_name = 'product'
