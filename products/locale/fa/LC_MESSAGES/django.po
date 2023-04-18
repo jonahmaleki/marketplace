@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-18 20:39+0430\n"
+"POT-Creation-Date: 2023-04-18 21:08+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\models.py:25
+msgid "Very bad"
+msgstr "خیلی بد"
+
+#: .\models.py:26
+msgid "Bad"
+msgstr "بد"
+
+#: .\models.py:27
+msgid "Normal"
+msgstr "معمولی"
+
+#: .\models.py:28
+msgid "Good"
+msgstr "خوب"
+
+#: .\models.py:29
+msgid "Perfect"
+msgstr "عالی"
+
+#: .\models.py:31 .\templates\products\product_detail.html:158
+msgid "write your comment"
+msgstr "نظر خود را بنویسید"
+
+#: .\models.py:35
+msgid "your score to this product"
+msgstr "امتیاز شما به این محصول"
+
+#: .\models.py:36
+msgid "i recommend this product"
+msgstr "من این محصول را پیشنهاد میکنم"
+
 #: .\templates\products\product_detail.html:19
 msgid "product detail"
 msgstr "جزِیات محصول"
@@ -30,7 +63,9 @@ msgid "add to cart"
 msgstr "اضافه به سبد خرید"
 
 #: .\templates\products\product_detail.html:59
-msgid "categories"
+#, fuzzy
+#| msgid "categories"
+msgid "catrgories"
 msgstr "دسته بندی ها"
 
 #: .\templates\products\product_detail.html:75
@@ -38,7 +73,9 @@ msgid "product description"
 msgstr "توضیحات محصول"
 
 #: .\templates\products\product_detail.html:79
-msgid "attributes"
+#, fuzzy
+#| msgid "attributes"
+msgid "atrebiuts"
 msgstr "ویژگی ها"
 
 #: .\templates\products\product_detail.html:83
@@ -52,10 +89,6 @@ msgstr "نظر برای"
 #: .\templates\products\product_detail.html:140
 msgid "rated"
 msgstr "امتیاز"
-
-#: .\templates\products\product_detail.html:158
-msgid "write your comment"
-msgstr "نظر خود را ینویسید"
 
 #: .\templates\products\product_detail.html:163
 msgid "send"
