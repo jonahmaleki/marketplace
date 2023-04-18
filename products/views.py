@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
-from .models import Product
+from .models import Product, Comment
 
 
 class ProductListView(ListView):
