@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
+from django.contrib import messages
 
 from .models import Product, Comment
 from .forms import CommentForm
@@ -40,4 +41,5 @@ class CommentCreateView(generic.CreateView):
         product_id = int(self.kwargs['pk'])
         product = get_object_or_404(Product, pk=product_id)
         obj.product = product
+        messages.success(request=self.request, message='your comment successfully add.')
         return super().form_valid(form)

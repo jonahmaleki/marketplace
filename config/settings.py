@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from dotenv import load_dotenv
+from django.contrib.messages import constants as messages
 
 from pathlib import Path
 
@@ -47,11 +48,12 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'allauth',
     'allauth.account',
+    'rosetta',
 
     # local apps
-    'accounts',
-    'pages',
-    'products',
+    'accounts.apps.AccountsConfig',
+    'pages.apps.PagesConfig',
+    'products.apps.ProductsConfig',
 ]
 SITE_ID = 1
 
@@ -142,6 +144,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'fa'
 
+LANGUAGES = (          # config for resetta translation adminstration to 2 language
+    ('en', 'English'),
+    ('fa', 'Persian'),
+)
 # TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Tehran'
 
@@ -183,3 +189,9 @@ STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 # mdeia files config
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
+
+
+# messages frameword setting
+MESSAGE_TAGS = {
+    messages.ERROR : 'danger',
+}
