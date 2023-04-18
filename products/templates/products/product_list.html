@@ -6,7 +6,7 @@ product list
 
 {% block content %}
     {% for product in products %}
-        {{ product.title }}
+        <a href="{% url 'product_detail' product.id %}">{{ product.title }}</a>
         <br>
         {{ product.description }}
         <br>
