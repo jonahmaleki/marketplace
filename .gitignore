@@ -3,3 +3,5 @@ db.sqlite3
 __pychache__/
 .idea/
 .env
+cart_help.py
+extends.html

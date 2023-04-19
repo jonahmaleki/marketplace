@@ -43,3 +43,4 @@ class CommentCreateView(generic.CreateView):
         obj.product = product
         messages.success(request=self.request, message='your comment successfully add.')
         return super().form_valid(form)
+
