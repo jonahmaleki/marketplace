@@ -58,7 +58,7 @@
                                                     <td class="product-quantity">
                                                         <div class="quantity">
                                                             <input type="number" class="quantity-input" name="qty"
-                                                                   id="qty-1" value="2" min="1">
+                                                                   id="qty-1" value="{{ item.quantity }}" min="1">
                                                         </div>
                                                     </td>
                                                     <td class="product-total-price">
@@ -91,7 +91,7 @@
                                             <span>مجموع</span>
                                         </div>
                                         <div class="cart-calculator__item--value">
-                                            <span>۳۴۶,۰۰۰ تومان</span>
+                                            <span>{{ cart.get_total_price }} {% trans '$' %}</span>
                                         </div>
                                     </div>
                                     <div class="cart-calculator__item order-total">
@@ -100,7 +100,7 @@
                                         </div>
                                         <div class="cart-calculator__item--value">
                                                 <span class="product-price-wrapper">
-                                                    <span class="money">۳۴۶,۰۰۰ تومان</span>
+                                                    <span class="money">{{ cart.get_total_price }} {% trans '$' %}</span>
                                                 </span>
                                         </div>
                                     </div>
