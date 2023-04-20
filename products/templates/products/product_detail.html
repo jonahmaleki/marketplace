@@ -10,9 +10,9 @@
 {% block content %}
     {% if messages %}
         {% for message in messages %}
-           <div class="alert alert-{{ message.tags }}" role="alert">
-            {{ message }}
-           </div>
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ message }}
+            </div>
         {% endfor %}
     {% endif %}
     <!-- Main Wrapper Start -->
@@ -51,162 +51,168 @@
                                     <span class="money text-success">{{ product.price }} {% trans '$' %}</span>
                                 </div>
                                 <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
-                                        <form action="{% url 'cart:cart_add' product.id %}" method="POST">
-                                            {% csrf_token %}
-                                            {{ add_to_cart_product_form.as_p }}
-                                            <button type="submit">{% trans 'add to cart' %}</button>
-                                        </form>
-{#                                    <div class="quantity-wrapper d-flex justify-content-start">#}
-{#                                        <div class="quantity">#}
-{#                                            <input type="number" class="quantity-input" name="qty" id="qty" value="1"#}
-{#                                                   min="1">#}
-{#                                        </div>#}
-                                    </div>
-{#                                    <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2">#}
-{#                                        {% trans 'add to cart' %}#}
-{#                                    </button>#}
+                                    <form action="{% url 'cart:cart_add' product.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <div class="quantity-wrapper d-flex justify-content-start">
+                                            <div class="quantity">
+                                                <input type="number"
+                                                       class="quantity-input"
+                                                       name="quantity"
+                                                       id="qty"
+                                                       value="1"
+                                                       min="1"
+                                                       max="30"
+                                                >
+                                            </div>
+                                        </div>
+                                        <button type="submit"
+                                                class="btn btn-small btn-bg-red btn-color-white btn-hover-2">
+                                            {% trans 'add to cart' %}
+                                        </button>
+                                    </form>
+
                                 </div>
-                                <div class="product-footer-meta mt-5 pt-5">
-                                    <p><span class="m-0">{% trans 'catrgories' %}:</span>
-                                        <a href="shop.html">لباس</a>,
-                                        <a href="shop.html">تابستانی</a>,
-                                        <a href="shop.html">گرم</a>,
-                                        <a href="shop.html">زنانه</a>
-                                    </p>
-                                </div>
+                            </div>
+                            <div class="product-footer-meta mt-5 pt-5">
+                                <p><span class="m-0">{% trans 'catrgories' %}:</span>
+                                    <a href="shop.html">لباس</a>,
+                                    <a href="shop.html">تابستانی</a>,
+                                    <a href="shop.html">گرم</a>,
+                                    <a href="shop.html">زنانه</a>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-center">
-                        <div class="col-12">
-                            <div class="product-data-tab tab-style-3">
-                                <div class="nav nav-tabs product-data-tab__head" id="product-tab" role="tablist">
-                                    <a class="m-0 product-data-tab__link nav-link active" id="nav-description-tab"
-                                       data-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
-                                        <span>{% trans 'product description' %}</span>
-                                    </a>
-                                    <a class="m-0 product-data-tab__link nav-link" id="nav-info-tab" data-toggle="tab"
-                                       href="#nav-info" role="tab" aria-selected="true">
-                                        <span>{% trans 'atrebiuts' %}</span>
-                                    </a>
-                                    <a class="m-0 product-data-tab__link nav-link" id="nav-reviews-tab"
-                                       data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="true">
-                                        <span>{% trans 'comments' %} ({{ product.comments.count }})</span>
-                                    </a>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="product-data-tab tab-style-3">
+                            <div class="nav nav-tabs product-data-tab__head" id="product-tab" role="tablist">
+                                <a class="m-0 product-data-tab__link nav-link active" id="nav-description-tab"
+                                   data-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
+                                    <span>{% trans 'product description' %}</span>
+                                </a>
+                                <a class="m-0 product-data-tab__link nav-link" id="nav-info-tab" data-toggle="tab"
+                                   href="#nav-info" role="tab" aria-selected="true">
+                                    <span>{% trans 'atrebiuts' %}</span>
+                                </a>
+                                <a class="m-0 product-data-tab__link nav-link" id="nav-reviews-tab"
+                                   data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="true">
+                                    <span>{% trans 'comments' %} ({{ product.comments.count }})</span>
+                                </a>
+                            </div>
+                            <div class="tab-content product-data-tab__content" id="product-tabContent">
+                                <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
+                                     aria-labelledby="nav-description-tab">
+                                    <div class="product-description text-justify">
+                                        <p>{{ product.description|linebreaks }}</p>
+                                    </div>
                                 </div>
-                                <div class="tab-content product-data-tab__content" id="product-tabContent">
-                                    <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
-                                         aria-labelledby="nav-description-tab">
-                                        <div class="product-description text-justify">
-                                            <p>{{ product.description|linebreaks }}</p>
-                                        </div>
+                                <div class="tab-pane text-right" id="nav-info" role="tabpanel"
+                                     aria-labelledby="nav-info-tab">
+                                    <div class="table-content table-responsive">
+                                        <table class="table shop_attributes">
+                                            <tbody>
+                                            <tr>
+                                                <th>وزن</th>
+                                                <td>۴۳۰ گرم</td>
+                                            </tr>
+                                            <tr>
+                                                <th>سایز</th>
+                                                <td>XL</td>
+                                            </tr>
+                                            <tr>
+                                                <th>رنگ</th>
+                                                <td>
+                                                    <a href="shop-sidebar.html">مشکی</a>,
+                                                    <a href="shop-sidebar.html">سبز</a>,
+                                                    <a href="shop-sidebar.html">قرمز</a>,
+                                                    <a href="shop-sidebar.html">نارنجی</a>,
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <div class="tab-pane text-right" id="nav-info" role="tabpanel"
-                                         aria-labelledby="nav-info-tab">
-                                        <div class="table-content table-responsive">
-                                            <table class="table shop_attributes">
-                                                <tbody>
-                                                <tr>
-                                                    <th>وزن</th>
-                                                    <td>۴۳۰ گرم</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>سایز</th>
-                                                    <td>XL</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>رنگ</th>
-                                                    <td>
-                                                        <a href="shop-sidebar.html">مشکی</a>,
-                                                        <a href="shop-sidebar.html">سبز</a>,
-                                                        <a href="shop-sidebar.html">قرمز</a>,
-                                                        <a href="shop-sidebar.html">نارنجی</a>,
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="nav-reviews" role="tabpanel"
-                                         aria-labelledby="nav-reviews-tab">
-                                        <div class="product-reviews">
-                                            <h3 class="review__title">{{ product.comments.count }} {% trans 'comment for' %}
-                                                {{ product.title }}</h3>
-                                            <ul class="review__list">
-                                                {% for comment in product.comments.all %}
-                                                    <li class="review__item">
-                                                        <div class="review__container">
-                                                            <div class="review__text">
-                                                                <div class="d-flex flex-sm-row flex-row">
-                                                                    <img src="{% static 'img/others/comment-1.jpg' %}"
-                                                                         alt="Review Avatar" class="review__avatar">
-                                                                    <div>
-                                                                        <strong class="review__author px-4">{{ comment.author.username }}</strong>
-                                                                        <div class="review__meta">
-                                                                            <span class="review__dash">-</span>
-                                                                            <span class="review__published-date">{{ comment.datetime_created }}</span>
-                                                                        </div>
-                                                                        <div class="product-rating">
-                                                                            <div class="m-0 star-rating star-five">
+                                </div>
+                                <div class="tab-pane fade" id="nav-reviews" role="tabpanel"
+                                     aria-labelledby="nav-reviews-tab">
+                                    <div class="product-reviews">
+                                        <h3 class="review__title">{{ product.comments.count }} {% trans 'comment for' %}
+                                            {{ product.title }}</h3>
+                                        <ul class="review__list">
+                                            {% for comment in product.comments.all %}
+                                                <li class="review__item">
+                                                    <div class="review__container">
+                                                        <div class="review__text">
+                                                            <div class="d-flex flex-sm-row flex-row">
+                                                                <img src="{% static 'img/others/comment-1.jpg' %}"
+                                                                     alt="Review Avatar" class="review__avatar">
+                                                                <div>
+                                                                    <strong class="review__author px-4">{{ comment.author.username }}</strong>
+                                                                    <div class="review__meta">
+                                                                        <span class="review__dash">-</span>
+                                                                        <span class="review__published-date">{{ comment.datetime_created }}</span>
+                                                                    </div>
+                                                                    <div class="product-rating">
+                                                                        <div class="m-0 star-rating star-five">
                                                                                 <span>{% trans 'rated' %} <strong
                                                                                         class="rating">{{ comment.stars }}</strong> out of 5</span>
-                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <p class="review__description text-right px-4">
-                                                                    {{ comment.body }}
-                                                                </p>
                                                             </div>
+                                                            <p class="review__description text-right px-4">
+                                                                {{ comment.body }}
+                                                            </p>
                                                         </div>
-                                                    </li>
-                                                {% endfor %}
-                                            </ul>
-                                            <div class="review-form-wrapper">
-                                                <div class="row">
-                                                    <div class="border-top py-5 w-100"></div>
-                                                    <div class="col-lg-8 m-auto">
-                                                        {#                                                        <span class="reply-title pull-right">{% trans 'write your comment' %}</span>#}
-                                                        {#                                                        <br>#}
-                                                        <form action="{% url 'comment_create' product.id %}"
-                                                              method="POST">
-                                                            {% csrf_token %}
-                                                            {{ comment_form|crispy }}
-                                                            <button type="submit">{% trans 'send' %}</button>
-                                                        </form>
-                                                        {#                                                        <form action="#" class="form text-right">#}
-                                                        {#                                                            <div class="form-notes mb--20">#}
-                                                        {#                                                                <p class="my-3"><span class="required">*</span>ایمیل شما#}
-                                                        {#                                                                    برای دیگران نشان داده نمیشود.</p>#}
-                                                        {#                                                            </div>#}
-                                                        {#                                                            <div class="form__group mb--10">#}
-                                                        {#                                                                <label class="form__label d-block" for="email">متن نظر#}
-                                                        {#                                                                    شما<span class="required">*</span></label>#}
-                                                        {#                                                                <textarea name="review" id="review"#}
-                                                        {#                                                                          class="form__input form__input--textarea"></textarea>#}
-                                                        {#                                                            </div>#}
-                                                        {#                                                            <div class="form__group mb--20">#}
-                                                        {#                                                                <label class="form__label d-block" for="name">نام#}
-                                                        {#                                                                    شما<span class="required">*</span></label>#}
-                                                        {#                                                                <input type="text" name="name" id="name"#}
-                                                        {#                                                                       class="form__input">#}
-                                                        {#                                                            </div>#}
-                                                        {#                                                            <div class="form__group mb--20">#}
-                                                        {#                                                                <label class="form__label d-block" for="email">ایمیل شما<span#}
-                                                        {#                                                                        class="required">*</span></label>#}
-                                                        {#                                                                <input type="email" name="email" id="email"#}
-                                                        {#                                                                       class="form__input">#}
-                                                        {#                                                            </div>#}
-                                                        {#                                                            <div class="form__group">#}
-                                                        {#                                                                <div class="form-row">#}
-                                                        {#                                                                    <div class="col-12">#}
-                                                        {#                                                                        <input type="submit" value="ارسال"#}
-                                                        {#                                                                               class="btn-submit">#}
-                                                        {#                                                                    </div>#}
-                                                        {#                                                                </div>#}
-                                                        {#                                                            </div>#}
-                                                        {#                                                        </form>#}
                                                     </div>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                        <div class="review-form-wrapper">
+                                            <div class="row">
+                                                <div class="border-top py-5 w-100"></div>
+                                                <div class="col-lg-8 m-auto">
+                                                    {#                                                        <span class="reply-title pull-right">{% trans 'write your comment' %}</span>#}
+                                                    {#                                                        <br>#}
+                                                    <form action="{% url 'comment_create' product.id %}"
+                                                          method="POST">
+                                                        {% csrf_token %}
+                                                        {{ comment_form|crispy }}
+                                                        <button type="submit">{% trans 'send' %}</button>
+                                                    </form>
+                                                    {#                                                        <form action="#" class="form text-right">#}
+                                                    {#                                                            <div class="form-notes mb--20">#}
+                                                    {#                                                                <p class="my-3"><span class="required">*</span>ایمیل شما#}
+                                                    {#                                                                    برای دیگران نشان داده نمیشود.</p>#}
+                                                    {#                                                            </div>#}
+                                                    {#                                                            <div class="form__group mb--10">#}
+                                                    {#                                                                <label class="form__label d-block" for="email">متن نظر#}
+                                                    {#                                                                    شما<span class="required">*</span></label>#}
+                                                    {#                                                                <textarea name="review" id="review"#}
+                                                    {#                                                                          class="form__input form__input--textarea"></textarea>#}
+                                                    {#                                                            </div>#}
+                                                    {#                                                            <div class="form__group mb--20">#}
+                                                    {#                                                                <label class="form__label d-block" for="name">نام#}
+                                                    {#                                                                    شما<span class="required">*</span></label>#}
+                                                    {#                                                                <input type="text" name="name" id="name"#}
+                                                    {#                                                                       class="form__input">#}
+                                                    {#                                                            </div>#}
+                                                    {#                                                            <div class="form__group mb--20">#}
+                                                    {#                                                                <label class="form__label d-block" for="email">ایمیل شما<span#}
+                                                    {#                                                                        class="required">*</span></label>#}
+                                                    {#                                                                <input type="email" name="email" id="email"#}
+                                                    {#                                                                       class="form__input">#}
+                                                    {#                                                            </div>#}
+                                                    {#                                                            <div class="form__group">#}
+                                                    {#                                                                <div class="form-row">#}
+                                                    {#                                                                    <div class="col-12">#}
+                                                    {#                                                                        <input type="submit" value="ارسال"#}
+                                                    {#                                                                               class="btn-submit">#}
+                                                    {#                                                                    </div>#}
+                                                    {#                                                                </div>#}
+                                                    {#                                                            </div>#}
+                                                    {#                                                        </form>#}
                                                 </div>
                                             </div>
                                         </div>
@@ -218,6 +224,7 @@
                 </div>
             </div>
         </div>
-        <!-- Main Content Wrapper End -->
+    </div>
+    <!-- Main Content Wrapper End -->
 
 {% endblock content %}

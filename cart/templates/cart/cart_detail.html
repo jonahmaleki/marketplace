@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block page_title %}
-    product detail
+    cart detail
 {% endblock page_title %}
 
 {% block content %}
@@ -39,8 +39,11 @@
                                             <tbody>
                                             {% for item in cart %}
                                                 <tr>
-                                                    <td class="product-remove text-left"><a href=""><i
-                                                            class="flaticon flaticon-cross"></i></a></td>
+                                                    <td class="product-remove text-left">
+                                                        <a href='{% url "cart:cart_remove"  item.product_obj.id  %}'>
+                                                            <i class="flaticon flaticon-cross"></i>
+                                                        </a>
+                                                    </td>
                                                     <td class="product-thumbnail text-left">
                                                         <img src="assets/img/products/prod-10-70x88.jpg"
                                                              alt="Product Thumnail">
@@ -63,7 +66,7 @@
                                                     </td>
                                                     <td class="product-total-price">
                                                             <span class="product-price-wrapper">
-                                                                <span class="money">۲۹۶,۰۰۰ {% trans '$' %}</span>
+                                                                <span class="money">{{ item.product_obj.price }} {% trans '$' %}</span>
                                                             </span>
                                                     </td>
                                                 </tr>
