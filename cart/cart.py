@@ -28,7 +28,10 @@ class Cart:
             self.cart[product_id]['quantity'] += quantity
 
         self.save()
-        messages.success(self.request, _('product successfully add to cart'))
+        if current_replace_quantity:
+            messages.success(self.request, _('cart successfully update'))
+        else:
+            messages.success(self.request, _('product successfully add to cart'))
 
     def remove(self, product):
         product_id = str(product.id)
