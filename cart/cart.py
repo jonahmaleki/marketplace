@@ -1,3 +1,6 @@
+from django.contrib import messages
+from django.utils.translation import gettext as _
+
 from products.models import Product
 
 
@@ -25,6 +28,7 @@ class Cart:
             self.cart[product_id]['quantity'] += quantity
 
         self.save()
+        messages.success(self.request, _('product successfully add to cart'))
 
     def remove(self, product):
         product_id = str(product.id)
@@ -32,6 +36,7 @@ class Cart:
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
+        messages.success(self.request, _('product successfully remove from your cart'))
 
     def save(self):
         self.session.modified = True
