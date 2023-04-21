@@ -156,7 +156,7 @@
                                                                     <div class="product-rating">
                                                                         <div class="m-0 star-rating star-five">
                                                                                 <span>{% trans 'rated' %} <strong
-                                                                                        class="rating">{{ comment.stars }}</strong> out of 5</span>
+                                                                                        class="rating"></strong> out of {{ comment.stars }}</span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -175,12 +175,16 @@
                                                 <div class="col-lg-8 m-auto">
                                                     {#                                                        <span class="reply-title pull-right">{% trans 'write your comment' %}</span>#}
                                                     {#                                                        <br>#}
-                                                    <form action="{% url 'comment_create' product.id %}"
-                                                          method="POST">
-                                                        {% csrf_token %}
-                                                        {{ comment_form|crispy }}
-                                                        <button type="submit">{% trans 'send' %}</button>
-                                                    </form>
+                                                    {% if user.is_authenticated %}
+                                                        <form action="{% url 'comment_create' product.id %}"
+                                                              method="POST">
+                                                            {% csrf_token %}
+                                                            {{ comment_form|crispy }}
+                                                            <button type="submit">{% trans 'send' %}</button>
+                                                        </form>
+                                                    {% else %}
+                                                        {% trans 'please for write comment first ' %} <a href="{% url 'account_login' %}">login</a>
+                                                    {% endif %}
                                                     {#                                                        <form action="#" class="form text-right">#}
                                                     {#                                                            <div class="form-notes mb--20">#}
                                                     {#                                                                <p class="my-3"><span class="required">*</span>ایمیل شما#}

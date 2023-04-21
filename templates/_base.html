@@ -1,6 +1,7 @@
 <!doctype html>
 <html  class="no-js"><!--------Theme Shered by Codingyar.com--------->
 {% load static %}
+{% load i18n %}
 
 <head>
     <meta charset="utf-8">
@@ -68,13 +69,8 @@
                                             </a>
                                         </li>
                                         <li class="mainmenu__item menu-item-has-children">
-                                            <a href="Blog.html" class="mainmenu__link">
-                                                <span class="mm-text">وبلاگ</span>
-                                            </a>
-                                        </li>
-                                        <li class="mainmenu__item menu-item-has-children">
                                             <a href="{% url 'product_list' %}" class="mainmenu__link">
-                                                <span class="mm-text">صفحات</span>
+                                                <span class="mm-text">{% trans 'product list' %}</span>
                                             </a>
                                          </li>
                                         <li class="mainmenu__item">
@@ -96,25 +92,25 @@
                                 <li class="header-toolbar__item mini-cart-item">
                                     <a href="#miniCart" class="header-toolbar__btn toolbar-btn mini-cart-btn">
                                         <i class="flaticon flaticon-shopping-cart"></i>
-                                        <sup class="mini-cart-count">2</sup>
+                                        <sup class="mini-cart-count">{{ cart|length }}</sup>
                                     </a>
                                 </li>
                                 <li class="header-toolbar__item user-info">
-                                    <a href="my-account.html" class="header-toolbar__btn">
+                                    <a href="profile.html" class="header-toolbar__btn">
                                         <i class="flaticon flaticon-user"></i>
                                     </a>
                                     <ul class="user-info-menu">
                                         <li>
-                                            <a class="text-right" href="my-account.html">حساب کاربری</a>
+                                            <a class="text-right" href="{% url 'account_signup' %}">{% trans 'create account' %} </a>
                                         </li>
                                         <li>
-                                            <a class="text-right" href="cart.html">سبد خرید</a>
+                                            <a class="text-right" href="{% url 'account_login' %}">{% trans 'login' %}</a>
                                         </li>
                                         <li>
-                                            <a class="text-right" href="wishlist.html">علاقه مندی ها</a>
+                                            <a class="text-right" href="{% url 'account_logout' %}">{% trans 'logout' %}</a>
                                         </li>
                                         <li>
-                                            <a class="text-right" href="order-tracking.html">تاریخچه سفارشات</a>
+                                            <a class="text-right" href="{% url 'product_list' %}"> {% trans 'product list' %}</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -257,7 +253,7 @@
     -->
     {% block content %}
     {% endblock content %}
-rt-->
+{#rt-->#}
         <footer class="footer">
             <div class="footer-top bg-color ptb--50" data-bg-color="#f6f6f6">
                 <div class="container">
