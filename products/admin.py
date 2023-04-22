@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 
 from .models import Product, Comment
-
+from jalali_date.admin import ModelAdminJalaliMixin
 
 class CommentInline(admin.TabularInline):
     model = Comment
@@ -10,7 +10,7 @@ class CommentInline(admin.TabularInline):
     extra = 0
 
 @admin.register(Product)
-class ProductAdmin(ModelAdmin):
+class ProductAdmin(ModelAdminJalaliMixin, ModelAdmin):
     list_display = ['title', 'price', 'active']
 
     inlines = [

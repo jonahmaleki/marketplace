@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'products.apps.ProductsConfig',
     'cart.apps.CartConfig',
+    'english_to_persian.apps.EnglishToPersianConfig',
 ]
 SITE_ID = 1
 
