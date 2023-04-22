@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'rosetta',
     'jalali_date',
+    'ckeditor',
 
     # local apps
     'accounts.apps.AccountsConfig',
@@ -189,6 +190,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 # static files config
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # mdeia files config
 MEDIA_URL = '/media/'
