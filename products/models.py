@@ -11,7 +11,7 @@ class Product(models.Model):
     active = models.BooleanField(default=True)
     image = models.ImageField(verbose_name=_('cover image'), upload_to='cover/image_cove/', blank=True)
 
-    datetime_created = models.DateTimeField(default=timezone.now)
+    datetime_created = models.DateTimeField(default=timezone.now, verbose_name=_('Date Time Of creation'))
     datetime_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
