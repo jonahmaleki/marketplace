@@ -184,7 +184,7 @@
                         </div>
                         <div class="mini-cart__buttons">
                             <a href="{% url 'cart:cart_detail' %}" class="btn btn-fullwidth btn-bg-sand mb--20">{% trans 'view cart' %}</a>
-                            <a href="checkout.html" class="btn btn-fullwidth btn-bg-sand">{% trans 'pay' %}</a>
+                            <a href="{% url 'order:order_create'  %}" class="btn btn-fullwidth btn-bg-sand">{% trans 'pay' %}</a>
                         </div>
                     </div>
                 </div>
