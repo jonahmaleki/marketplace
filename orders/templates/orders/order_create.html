@@ -9,16 +9,10 @@
 {% endblock page_title %}
 
 {% block content %}
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}" role="alert">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
 
     {% trans 'order' as header_name %}
     {% include 'topheader.html' with header_name=header_name %}
+
     <!-- Main Content Wrapper Start -->
     <div class="main-content-wrapper">
         <div class="page-content-inner">
@@ -37,7 +31,7 @@
                                     <div class="form__group col-md-6 mb-sm--30">
                                         <label for="billing_fname" class="form__label form__label--2">نام <span
                                                 class="required">*</span></label>
-                                        <input type="text" name="first_name" id="billing_fname"
+                                        <input type="text" name="{{ form.first_name.name }}" id="billing_fname"
                                                class="form__input form__input--2">
                                         {% if form.errors %}
                                             {% for message in form.first_name.errors %}
@@ -50,7 +44,7 @@
                                     <div class="form__group col-md-6">
                                         <label for="billing_lname" class="form__label form__label--2">نام خانوادگی <span
                                                 class="required">*</span></label>
-                                        <input type="text" name="last_name" id="billing_lname"
+                                        <input type="text" name="{{ form.last_name.name }}" id="billing_lname"
                                                class="form__input form__input--2">
                                         {% if form.errors %}
                                             {% for message in form.last_name.errors %}
@@ -64,7 +58,7 @@
                                 <div class="form-row mb--20">
                                     <div class="form__group col-12">
                                         <label for="billing_address" class="form__label form__label--2">آدرس</label>
-                                        <input type="text" name="address" id="billing_address"
+                                        <input type="text" name="{{ form.address.name }}" id="billing_address"
                                                class="form__input form__input--2">
                                        {% if form.errors %}
                                             {% for message in form.address.errors %}
@@ -79,7 +73,7 @@
                                     <div class="form__group col-12">
                                         <label for="billing_phone" class="form__label form__label--2">شماره همراه <span
                                                 class="required">*</span></label>
-                                        <input type="text" name="phone_number" id="billing_phone"
+                                        <input type="text" name="{{ form.phone_number.name }}" id="billing_phone"
                                                class="form__input form__input--2">
                                         {% if form.errors %}
                                             {% for message in form.phone_number.errors %}
@@ -94,7 +88,7 @@
                                     <div class="form__group col-12">
                                         <label for="billing_email" class="form__label form__label--2">ایمیل <span
                                                 class="required">*</span></label>
-                                        <input type="email" name="email" id="billing_email"
+                                        <input type="email" name="{{ form.email.name }}" id="billing_email"
                                                class="form__input form__input--2">
                                          {% if form.errors %}
                                             {% for message in form.email.errors %}
@@ -109,7 +103,7 @@
                                     <div class="form__group col-12">
                                         <label for="orderNotes" class="form__label form__label--2">یادداشت شما</label>
                                         <textarea class="form__input form__input--2 form__input--textarea"
-                                                  id="orderNotes" name="order_note"
+                                                  id="orderNotes" name="{{ form.order_note.name }}"
                                                   placeholder="اگر یادداشتی دارید در اینجا وارد کنید. در غیر این صورت این مکان را خالی بگذارید"></textarea>
                                          {% if form.errors %}
                                             {% for message in form.order_note.errors %}
