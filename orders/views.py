@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
+from django.utils.translation import gettext as _
 from .forms import OrderForm
 
 @login_required
 def order_create_view(request):
-    order_obj = OrderForm()
+    order_form = OrderForm()
 
     if request.method == 'POST':
         order_form = OrderForm(request.POST, )
@@ -15,5 +16,5 @@ def order_create_view(request):
             order_obj.save()
 
     return render(request, 'orders/order_create.html', context={
-        'form': order_obj,
+        'form': order_form,
     })
