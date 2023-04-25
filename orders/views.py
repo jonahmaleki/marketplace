@@ -25,12 +25,11 @@ def order_create_view(request):
             order_obj.save()
 
             for item in cart:
-                product = item['product_obj']
                 OrderItem.objects.create(
                     order=order_obj,
-                    product=product,
+                    product=item['product_obj'],
                     quantity=item['quantity'],
-                    price=product.price,
+                    price=item['product_obj'].price
                 )
             cart.clear()
 
@@ -38,7 +37,8 @@ def order_create_view(request):
             request.user.last_name = order_obj.last_name
             request.user.save()
 
-            messages.success(request, _('your order has successfully placed'))
+            request.session['order_id'] = order_obj.id
+            return redirect('payment:payment_process')
 
     return render(request, 'orders/order_create.html', context={
         'form': order_form,
