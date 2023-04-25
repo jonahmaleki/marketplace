@@ -30,6 +30,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG')
 
+
 ALLOWED_HOSTS = []
 
 
@@ -202,3 +203,6 @@ MEDIA_ROOT = str(BASE_DIR.joinpath('media/'))
 MESSAGE_TAGS = {
     messages.ERROR : 'danger',
 }
+
+#zarinpal config
+ZARINPAL_MERCHANT_ID = os.getenv('DJANGO_ZARINPAL_MERCHANT_ID')

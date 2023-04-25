@@ -13,6 +13,8 @@ class Order(models.Model):
     phone_number = models.CharField(max_length=15, verbose_name=_('Phone Number'))
     order_note = models.CharField(max_length=300, blank=True, verbose_name=_('Order Note'))
 
+    zarinpal_authority = models.CharField(max_length=255, blank=True)
+
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Created'))
     datetime_modified = models.DateTimeField(auto_now=True, verbose_name=_('Modified'))
 
