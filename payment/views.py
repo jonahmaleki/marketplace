@@ -1,6 +1,6 @@
 import requests
 import json
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.conf import settings
 from django.http import HttpResponse
 
@@ -24,7 +24,7 @@ def payment_process(request):
         'merchant_id': settings.ZARINPAL_MERCHANT_ID,
         'amount': rial_total_price,
         'description': f'#{order.id} : {order.user.first_name} {order.user.last_name}',
-        'callback_url': 'http://127.0.0.1:8000',
+        'callback_url': 'http://127.0.0.1:8000' + reverse('payment:payment_callback')
     }
 
     res = requests.post(url=zarinpal_requets_url, data=json.dumps(request_date),  headers=request_header)
@@ -84,6 +84,9 @@ def payment_callback(request):
                 return HttpResponse('پرداخت شما با موفقیت انجام شد البته این تراکنش قبلا انجام شده است')
 
             else:
-                return HttpResponse('پرداخت نا موفق بود')
+                error_message = res.json()['errors']['code']
+                error_code = res.json()['errors']['message']
+                return HttpResponse(f'{error_code} {error_message}پرداخت نا موفق بود')
 
-
+    else:
+        return HttpResponse('پرداخت ناموفق بود')
