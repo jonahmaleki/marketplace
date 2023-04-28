@@ -14,6 +14,8 @@ class Order(models.Model):
     order_note = models.CharField(max_length=300, blank=True, verbose_name=_('Order Note'))
 
     zarinpal_authority = models.CharField(max_length=255, blank=True)
+    zarinpal_ref_id = models.CharField(max_length=150, blank=True)
+    zarinpal_data = models.TextField(blank=True)
 
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Created'))
     datetime_modified = models.DateTimeField(auto_now=True, verbose_name=_('Modified'))
