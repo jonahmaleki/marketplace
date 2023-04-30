@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-21 22:38+0430\n"
+"POT-Creation-Date: 2023-04-28 17:46+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,21 +16,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-#: .\_base.html:73 .\_base.html:113
+
+#: .\_base.html:75 .\_base.html:115
 msgid "product list"
 msgstr "لیست محصولات"
 
-#: .\_base.html:104
+#: .\_base.html:106
 msgid "create account"
 msgstr "ساخت حساب کاربری"
 
-#: .\_base.html:107
+#: .\_base.html:109
 msgid "login"
 msgstr "ورود"
 
-#: .\_base.html:110
+#: .\_base.html:112
 msgid "logout"
 msgstr "خروج"
+
+#: .\_base.html:184 .\_base.html:194
+msgid "$"
+msgstr "تومان"
+
+#: .\_base.html:193
+msgid "total price"
+msgstr "قیمت کل"
+
+#: .\_base.html:197
+msgid "view cart"
+msgstr "مشاهده سبد خرید"
+
+#: .\_base.html:199
+msgid "pay"
+msgstr "پرداخت"
 
 #: .\account\email\email_confirmation_message.txt:5
 #, python-format
